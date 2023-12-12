@@ -20,6 +20,10 @@ const validateApiKey = (req, res, next) => {
   next();
 };
 
+app.get("/", (req, res) => {
+  res.send("hello");
+});
+
 app.post("/calculations", validateApiKey, async function (req, res, next) {
   try {
     const response = await axios.post(
@@ -73,6 +77,7 @@ app.get(
     }
   }
 );
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
