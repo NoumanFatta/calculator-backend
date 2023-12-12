@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 app.post("/calculations", validateApiKey, async function (req, res, next) {
   try {
     const response = await axios.post(
-      `http://127.0.0.1:5001/christopher-lanternfinance/us-central1/calculateResult/calculations`,
+      `https://us-central1-christopher-lanternfinance.cloudfunctions.net/calculateResult/calculations`,
       { ...req.body },
       { headers: { authorization: req.headers.authorization } }
     );
@@ -43,7 +43,7 @@ app.post("/calculations", validateApiKey, async function (req, res, next) {
 app.post("/conversions", validateApiKey, async function (req, res, next) {
   try {
     const response = await axios.post(
-      `http://127.0.0.1:5001/christopher-lanternfinance/us-central1/calculateResult/conversions`,
+      `https://us-central1-christopher-lanternfinance.cloudfunctions.net/calculateResult/conversions`,
       { ...req.body },
       { headers: { authorization: req.headers.authorization } }
     );
@@ -65,7 +65,7 @@ app.get(
       collectionName =
         collectionName.charAt(0).toUpperCase() + collectionName.slice(1);
       const response = await axios.get(
-        `http://127.0.0.1:5001/christopher-lanternfinance/us-central1/getHistory/${collectionName}`,
+        `https://us-central1-christopher-lanternfinance.cloudfunctions.net/getHistory/${collectionName}`,
         { headers: { authorization: req.headers.authorization } }
       );
       res.json(response.data);
